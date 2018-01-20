@@ -23,8 +23,24 @@
             <name>bintray</name>
             <url>https://dl.bintray.com/dptinfoutln/public</url>
         </repository>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-maxtemmerier-maven-repo</id>
+            <name>bintray</name>
+            <url>https://dl.bintray.com/maxtemmerier/maven-repo</url>
+        </repository>
     </repositories>
     <pluginRepositories>
+        <pluginRepository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-dptinfoutln-public</id>
+            <name>bintray-plugins</name>
+            <url>https://dl.bintray.com/dptinfoutln/public</url>
+        </pluginRepository>
         <pluginRepository>
             <snapshots>
                 <enabled>false</enabled>
@@ -95,12 +111,19 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>bintray-maxtemmerier-maven-repo</id>
+            <name>maxtemmerier-maven-repo</name>
+            <url>https://api.bintray.com/maven/maxtemmerier/maven-repo/boardgame_businessclass/;publish=1</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
             <groupId>fr.univtln.m2dapm.boardgame</groupId>
             <artifactId>BoardGame_BusinessClass</artifactId>
-            <version>1.1.0-dev-54</version>
+            <version>1.1.0-dev-56</version>
         </dependency>
 
         <dependency>
