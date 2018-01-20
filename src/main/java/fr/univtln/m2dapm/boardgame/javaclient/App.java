@@ -1,26 +1,18 @@
 package fr.univtln.m2dapm.boardgame.javaclient;
 
-import org.apache.log4j.PatternLayout;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.lang.invoke.MethodHandles;
+import fr.univtln.m2dapm.boardgame.javaclient.login.LogInView;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-/**
- * Hello world!
- */
-public class App {
-    @SuppressWarnings("unused")
-    private static final Class[] shadeHack = {org.apache.log4j.RollingFileAppender.class,
-            org.apache.log4j.ConsoleAppender.class,
-            PatternLayout.class};
-
-    //Set the logger with the real class name.
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+public class App extends Application {
 
     public static void main(String[] args) {
-        logger.info("App started.");
-        logger.debug("About to talk :");
-        System.out.println("Hello world !");
+        Application.launch();
+    }
+
+
+    public void start(Stage primaryStage) throws Exception {
+        LogInView loginScreen = new LogInView(primaryStage);
     }
 }
