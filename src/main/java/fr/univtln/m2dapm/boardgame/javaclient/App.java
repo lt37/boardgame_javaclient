@@ -1,4 +1,4 @@
-package fr.univtln.m2dapm.boardgame;
+package fr.univtln.m2dapm.boardgame.javaclient;
 
 import org.apache.log4j.PatternLayout;
 import org.slf4j.Logger;
