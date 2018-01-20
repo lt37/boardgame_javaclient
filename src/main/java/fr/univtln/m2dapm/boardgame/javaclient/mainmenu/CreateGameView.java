@@ -10,9 +10,14 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import static fr.univtln.m2dapm.boardgame.javaclient.ViewConstants.*;
 
-public class CreateGameView {
+public class CreateGameView implements Observer {
+
+    private CreateGameController controller;
 
     private Stage stage;
     private Scene scene;
@@ -21,6 +26,7 @@ public class CreateGameView {
     private Text fleetCommanderTitle;
     private Text name;
     private Text password;
+    private Text test;
 
     private TextField nameField;
     private TextField passwordField;
@@ -37,6 +43,7 @@ public class CreateGameView {
 
     public CreateGameView(Stage stage) {
         this.stage = stage;
+        this.controller = new CreateGameController(this);
 
         initializeElements();
         initializeMainPain();
@@ -51,6 +58,7 @@ public class CreateGameView {
         fleetCommanderTitle = new Text(GAME_TITLE);
         name = new Text(NAME);
         password = new Text(PASSWORD);
+        test = new Text();
 
         nameField = new TextField();
         passwordField = new PasswordField();
@@ -81,7 +89,7 @@ public class CreateGameView {
         passwordBox.getChildren().addAll(password, passwordField);
         buttonBox.getChildren().addAll(okButton, backButton);
 
-        mainPane.getChildren().addAll(fleetCommanderTitle, nameBox, passwordBox, privateCheck, buttonBox);
+        mainPane.getChildren().addAll(fleetCommanderTitle, nameBox, passwordBox, privateCheck, buttonBox, test);
     }
 
 
@@ -93,11 +101,23 @@ public class CreateGameView {
 
 
     private void setListeners() {
+        okButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controller.createGame(nameField.getText(), passwordField.getText(), privateCheck.isSelected());
+            }
+        });
+
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 new MainMenuView(stage);
             }
         });
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        test.setText("New Game!");
     }
 }
