@@ -1,5 +1,7 @@
 package fr.univtln.m2dapm.boardgame.javaclient.mainmenu;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -58,5 +60,19 @@ public class MainMenuView {
     }
 
 
-    private void setListeners() {}
+    private void setListeners() {
+        createButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                new CreateGameView(stage);
+            }
+        });
+
+        joinButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                new JoinGameView(stage);
+            }
+        });
+    }
 }
