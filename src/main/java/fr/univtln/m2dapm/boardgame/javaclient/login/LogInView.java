@@ -86,7 +86,7 @@ public class LogInView {
 
 
     private void initializeScene() {
-        scene = new Scene(mainPane, LOGIN_WIDTH, LOGIN_WIDTH);
+        scene = new Scene(mainPane, LOGIN_WIDTH, LOGIN_HEIGHT);
         stage.setTitle(APP_TITLE + TITLE_SEPARATION + SCENE_TITLE);
         stage.setScene(scene);
     }

@@ -1,5 +1,6 @@
 package fr.univtln.m2dapm.boardgame.javaclient.mainmenu;
 
+import fr.univtln.m2dapm.boardgame.javaclient.game.GameView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -118,6 +119,7 @@ public class CreateGameView implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        test.setText("New Game!");
+        stage.close();
+        new GameView(new Stage());
     }
 }
