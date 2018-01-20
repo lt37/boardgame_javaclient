@@ -115,7 +115,7 @@
         <repository>
             <id>bintray-maxtemmerier-maven-repo</id>
             <name>maxtemmerier-maven-repo</name>
-            <url>https://api.bintray.com/maven/maxtemmerier/maven-repo/boardgame_businessclass/;publish=1</url>
+            <url>https://api.bintray.com/maven/maxtemmerier/maven-repo/boardgame_javaclient/;publish=1</url>
         </repository>
     </distributionManagement>
 
