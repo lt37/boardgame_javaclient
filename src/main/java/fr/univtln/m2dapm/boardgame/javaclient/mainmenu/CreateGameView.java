@@ -108,6 +108,7 @@ public class CreateGameView implements Observer {
         okButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                //TODO: validate parameters
                 controller.createGame(nameField.getText(), passwordField.getText(), privateCheck.isSelected());
             }
         });

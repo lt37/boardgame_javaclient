@@ -15,7 +15,7 @@ public class CreateGameController {
 
 
     public void createGame(String name, String password, boolean isPrivate) {
-        //TODO: Check values
+        //TODO: validate parameters
         model.createGame(name, password, isPrivate);
     }
 
