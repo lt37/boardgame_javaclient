@@ -1,7 +1,28 @@
 package fr.univtln.m2dapm.boardgame.javaclient;
 
-public class ViewConstants {
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
+import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 
+public abstract class AppConstants {
+
+    /*
+     * REST
+     */
+    public static WebResource webResource;
+
+    static {
+        ClientConfig cc = new DefaultClientConfig();
+        cc.getClasses().add(JacksonJsonProvider.class);
+        Client c = Client.create(cc);
+        webResource = c.resource("http://localhost:8080/fleetcommander/rest");
+    }
+
+    /*
+     * View
+     */
     public static final String APP_TITLE = "Fleet Commander";
     public static final String GAME_TITLE = "FLEET COMMANDER";
     public static final String TITLE_SEPARATION = " - ";

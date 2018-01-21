@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.util.Observable;
 import java.util.Observer;
 
-import static fr.univtln.m2dapm.boardgame.javaclient.ViewConstants.*;
+import static fr.univtln.m2dapm.boardgame.javaclient.AppConstants.*;
 
 public class SignUpView implements Observer {
 
