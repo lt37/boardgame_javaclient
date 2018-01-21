@@ -1,6 +1,7 @@
 package fr.univtln.m2dapm.boardgame.javaclient.login;
 
 import fr.univtln.m2dapm.boardgame.business.gameinfos.Player;
+import fr.univtln.m2dapm.boardgame.javaclient.ViewConstants;
 import fr.univtln.m2dapm.boardgame.javaclient.mainmenu.MainMenuView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -62,7 +63,7 @@ public class LogInView implements Observer {
         userField = new TextField();
         passwordField = new PasswordField();
 
-        okButton = new Button(OK_BUTTON);
+        okButton = new Button(ViewConstants.SIGN_UP);
         signUpButton = new Button(SIGN_UP);
     }
 

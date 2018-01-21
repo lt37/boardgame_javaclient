@@ -31,7 +31,7 @@ public class SignUpView implements Observer {
     private TextField passwordField;
     private Text confirmPassword;
     private TextField confirmPasswordField;
-    private Button okButton;
+    private Button signUpButton;
     private Button loginButton;
 
     private final String USER_NAME = "Pseudo :";
@@ -39,6 +39,7 @@ public class SignUpView implements Observer {
     private final String CONFIRM_PASSWORD = "Confirmer Mot de Passe :";
     private final String SCENE_TITLE = "Inscription";
     private final String LOG_IN = "Se Connecter";
+    private final String SIGN_UP = "Valider l'inscription";
 
 
 
@@ -64,7 +65,7 @@ public class SignUpView implements Observer {
         passwordField = new PasswordField();
         confirmPasswordField = new TextField();
 
-        okButton = new Button(OK_BUTTON);
+        signUpButton = new Button(SIGN_UP);
         loginButton = new Button(LOG_IN);
     }
 
@@ -92,7 +93,7 @@ public class SignUpView implements Observer {
         userBox.getChildren().addAll(user, userField);
         passwordBox.getChildren().addAll(password, passwordField);
         confirmPasswordBox.getChildren().addAll(confirmPassword, confirmPasswordField);
-        buttonBox.getChildren().addAll(okButton, loginButton);
+        buttonBox.getChildren().addAll(signUpButton, loginButton);
 
         mainPane.getChildren().addAll(userBox, passwordBox, confirmPasswordBox, buttonBox);
     }
@@ -110,6 +111,14 @@ public class SignUpView implements Observer {
             @Override
             public void handle(ActionEvent event) {
                 new LogInView(stage);
+            }
+        });
+
+        signUpButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //TODO: validate parameters
+                controller.signUp(userField.getText(), passwordField.getText());
             }
         });
     }

@@ -10,4 +10,10 @@ public class SignUpController {
         this.model = new SignUpModel();
         model.addObserver(this.view);
     }
+
+
+    public void signUp(String userName, String password) {
+        //TODO: validate parameters
+        model.signUp(userName, password);
+    }
 }
