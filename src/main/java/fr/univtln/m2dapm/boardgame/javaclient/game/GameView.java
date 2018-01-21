@@ -1,5 +1,6 @@
 package fr.univtln.m2dapm.boardgame.javaclient.game;
 
+import fr.univtln.m2dapm.boardgame.business.gameinfos.Game;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -24,9 +25,9 @@ public class GameView implements Observer{
     private GraphicsContext gc;
 
 
-    public GameView(Stage stage) {
+    public GameView(Stage stage, Game game) {
         this.stage = stage;
-        this.controller = new GameController(this);
+        this.controller = new GameController(this, game);
 
         initializeElements();
         drawBackground();
@@ -105,6 +106,5 @@ public class GameView implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-
     }
 }
