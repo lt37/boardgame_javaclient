@@ -8,6 +8,7 @@ public class LoginModel extends Observable {
 
 
     public void logIn(String userName, String password) {
+        //TODO: fetch player from database
         Player player = new Player();
         player.setLoginName(userName);
         setChanged();

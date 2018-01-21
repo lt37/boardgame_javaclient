@@ -63,7 +63,7 @@ public class LogInView implements Observer {
         userField = new TextField();
         passwordField = new PasswordField();
 
-        okButton = new Button(ViewConstants.SIGN_UP);
+        okButton = new Button(ViewConstants.OK_BUTTON);
         signUpButton = new Button(SIGN_UP);
     }
 
@@ -110,6 +110,7 @@ public class LogInView implements Observer {
 
         okButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
+            //TODO: validate parameters
             public void handle(ActionEvent event) {
                 controller.logIn(userField.getText(), passwordField.getText());
             }

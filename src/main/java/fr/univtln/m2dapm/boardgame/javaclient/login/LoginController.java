@@ -13,6 +13,7 @@ public class LoginController {
 
 
     public void logIn(String userName, String password) {
+        //TODO: validate parameters
         model.logIn(userName, password);
     }
 }
