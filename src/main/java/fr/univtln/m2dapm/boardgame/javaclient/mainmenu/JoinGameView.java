@@ -1,5 +1,6 @@
 package fr.univtln.m2dapm.boardgame.javaclient.mainmenu;
 
+import fr.univtln.m2dapm.boardgame.business.gameinfos.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -12,9 +13,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+
 import static fr.univtln.m2dapm.boardgame.javaclient.ViewConstants.*;
 
-public class JoinGameView {
+public class JoinGameView implements Observer{
+
+    private JoinGameController controller;
 
     private Stage stage;
     private Scene scene;
@@ -34,8 +41,9 @@ public class JoinGameView {
     private final String PASSWORD = "Mot de passe :";
     private final String SCENE_TITLE = "Rejoindre une partie";
 
-    public JoinGameView(Stage stage) {
+    public JoinGameView(Stage stage, Player currentPlayer) {
         this.stage = stage;
+        this.controller = new JoinGameController(this, currentPlayer);
 
         initializeElements();
         initializeMainPane();
@@ -93,8 +101,15 @@ public class JoinGameView {
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                new MainMenuView(stage);
+                controller.goBack();
             }
         });
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        List args = (List)arg;
+        if (args.get(0) == "back")
+            new MainMenuView(stage, (Player)args.get(1));
     }
 }

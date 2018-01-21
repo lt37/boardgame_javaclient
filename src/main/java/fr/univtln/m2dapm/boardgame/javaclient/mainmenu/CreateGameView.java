@@ -1,5 +1,7 @@
 package fr.univtln.m2dapm.boardgame.javaclient.mainmenu;
 
+import fr.univtln.m2dapm.boardgame.business.gameinfos.Game;
+import fr.univtln.m2dapm.boardgame.business.gameinfos.Player;
 import fr.univtln.m2dapm.boardgame.javaclient.game.GameView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -42,9 +45,9 @@ public class CreateGameView implements Observer {
     private final String SCENE_TITLE = "Créer une partie";
 
 
-    public CreateGameView(Stage stage) {
+    public CreateGameView(Stage stage, Player currentPlayer) {
         this.stage = stage;
-        this.controller = new CreateGameController(this);
+        this.controller = new CreateGameController(this, currentPlayer);
 
         initializeElements();
         initializeMainPain();
@@ -112,14 +115,20 @@ public class CreateGameView implements Observer {
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                new MainMenuView(stage);
+                controller.goBack();
             }
         });
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        stage.close();
-        new GameView(new Stage());
+        List args = (List)arg;
+        if (args.get(0) == "create") {
+            stage.close();
+            new GameView(new Stage(), (Game)args.get(1));
+        }
+        else if (args.get(0) == "back") {
+            new MainMenuView(stage, (Player)args.get(1));
+        }
     }
 }

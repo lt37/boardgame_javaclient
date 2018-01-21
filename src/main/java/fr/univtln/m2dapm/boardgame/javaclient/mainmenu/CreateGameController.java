@@ -1,13 +1,15 @@
 package fr.univtln.m2dapm.boardgame.javaclient.mainmenu;
 
+import fr.univtln.m2dapm.boardgame.business.gameinfos.Player;
+
 public class CreateGameController {
 
     private CreateGameView view;
     private CreateGameModel model;
 
-    public CreateGameController(CreateGameView view) {
+    public CreateGameController(CreateGameView view, Player currentPlayer) {
         this.view = view;
-        this.model = new CreateGameModel();
+        this.model = new CreateGameModel(currentPlayer);
         this.model.addObserver(this.view);
     }
 
@@ -15,5 +17,10 @@ public class CreateGameController {
     public void createGame(String name, String password, boolean isPrivate) {
         //TODO: Check values
         model.createGame(name, password, isPrivate);
+    }
+
+
+    public void goBack() {
+        model.goBack();
     }
 }

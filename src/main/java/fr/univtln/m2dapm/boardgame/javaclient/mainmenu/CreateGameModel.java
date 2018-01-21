@@ -13,7 +13,9 @@ public class CreateGameModel extends Observable {
     private String texte;
     private Player currentPlayer;
 
-    public CreateGameModel(){}
+    public CreateGameModel(Player currentPlayer){
+        this.currentPlayer = currentPlayer;
+    }
 
 
     public void createGame(String name, String password, boolean isPrivate) {
@@ -23,8 +25,19 @@ public class CreateGameModel extends Observable {
         Game game = new Game.Builder().setName(name).setPassword(password).setaPrivate(isPrivate).setBoard(new Board())
                 .setMaxPlayers(2).setMaxArmyClassValue(8).setPlayers(players).build();
         //TODO: POST Game to Rest Server
-
+        List args = new ArrayList();
+        args.add("create");
+        args.add(game);
         setChanged();
-        notifyObservers();
+        notifyObservers(args);
+    }
+
+
+    public void goBack() {
+        List args = new ArrayList();
+        args.add("back");
+        args.add(currentPlayer);
+        setChanged();
+        notifyObservers(args);
     }
 }
