@@ -15,6 +15,12 @@ public class JoinGameController {
     }
 
 
+    public void joinGame(String name, String password) {
+        //TODO: validate parameters
+        model.joinGame(name, password);
+    }
+
+
     public void goBack() {
         model.goBack();
     }

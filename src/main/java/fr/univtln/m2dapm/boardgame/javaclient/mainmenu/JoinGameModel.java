@@ -1,5 +1,6 @@
 package fr.univtln.m2dapm.boardgame.javaclient.mainmenu;
 
+import fr.univtln.m2dapm.boardgame.business.gameinfos.Game;
 import fr.univtln.m2dapm.boardgame.business.gameinfos.Player;
 
 import java.util.ArrayList;
@@ -12,6 +13,15 @@ public class JoinGameModel extends Observable {
 
     public JoinGameModel(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
+    }
+
+
+    public void joinGame(String name, String password) {
+        //TODO: fetch game from database
+        Game game = new Game();
+        List args = new ArrayList();
+        args.add("join");
+        args.add(game);
     }
 
 

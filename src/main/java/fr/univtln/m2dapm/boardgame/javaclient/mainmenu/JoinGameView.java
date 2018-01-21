@@ -1,6 +1,8 @@
 package fr.univtln.m2dapm.boardgame.javaclient.mainmenu;
 
+import fr.univtln.m2dapm.boardgame.business.gameinfos.Game;
 import fr.univtln.m2dapm.boardgame.business.gameinfos.Player;
+import fr.univtln.m2dapm.boardgame.javaclient.game.GameView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -104,6 +106,14 @@ public class JoinGameView implements Observer{
                 controller.goBack();
             }
         });
+
+        okButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //TODO: validate parameters
+                controller.joinGame(nameField.getText(), passwordField.getText());
+            }
+        });
     }
 
     @Override
@@ -111,5 +121,7 @@ public class JoinGameView implements Observer{
         List args = (List)arg;
         if (args.get(0) == "back")
             new MainMenuView(stage, (Player)args.get(1));
+        else if (args.get(0) == "join")
+            new GameView(new Stage(), (Game)args.get(1));
     }
 }
