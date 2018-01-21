@@ -12,9 +12,14 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import static fr.univtln.m2dapm.boardgame.javaclient.ViewConstants.*;
 
-public class SignUpView {
+public class SignUpView implements Observer {
+
+    private SignUpController controller;
 
     private Stage stage;
     private Scene scene;
@@ -39,6 +44,7 @@ public class SignUpView {
 
     public SignUpView(Stage stage) {
         this.stage = stage;
+        this.controller = new SignUpController(this);
 
         initializeElements();
         initializeMainPane();
@@ -106,5 +112,10 @@ public class SignUpView {
                 new LogInView(stage);
             }
         });
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
     }
 }
