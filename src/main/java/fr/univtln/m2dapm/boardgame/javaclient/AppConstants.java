@@ -13,6 +13,8 @@ public abstract class AppConstants {
      */
     public static WebResource webResource;
 
+    public static final String PLAYERS = "players";
+
     static {
         ClientConfig cc = new DefaultClientConfig();
         cc.getClasses().add(JacksonJsonProvider.class);

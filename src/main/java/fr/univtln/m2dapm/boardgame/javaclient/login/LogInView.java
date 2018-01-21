@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -119,7 +120,15 @@ public class LogInView implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        stage.close();
-        new MainMenuView(new Stage(), (Player)arg);
+        List args = (List)arg;
+
+        if (args.get(0) == "password ok") {
+            stage.close();
+            new MainMenuView(new Stage(), (Player)args.get(1));
+        }
+
+        else if (args.get(0) == "password not ok") {
+            //TODO: wrong password
+        }
     }
 }

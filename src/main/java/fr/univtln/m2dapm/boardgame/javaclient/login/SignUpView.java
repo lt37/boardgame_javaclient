@@ -63,7 +63,7 @@ public class SignUpView implements Observer {
 
         userField = new TextField();
         passwordField = new PasswordField();
-        confirmPasswordField = new TextField();
+        confirmPasswordField = new PasswordField();
 
         signUpButton = new Button(SIGN_UP);
         loginButton = new Button(LOG_IN);
