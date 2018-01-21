@@ -1,5 +1,6 @@
 package fr.univtln.m2dapm.boardgame.javaclient.login;
 
+import fr.univtln.m2dapm.boardgame.business.gameinfos.Player;
 import fr.univtln.m2dapm.boardgame.javaclient.mainmenu.MainMenuView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,10 +14,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import static fr.univtln.m2dapm.boardgame.javaclient.ViewConstants.*;
 import static fr.univtln.m2dapm.boardgame.javaclient.ViewConstants.SMALL_SPACING;
 
-public class LogInView {
+public class LogInView implements Observer {
+
+    private LoginController controller;
 
     private Stage stage;
     private Scene scene;
@@ -38,6 +44,7 @@ public class LogInView {
 
     public LogInView(Stage stage) {
         this.stage = stage;
+        this.controller = new LoginController(this);
 
         initializeElements();
         initializeMainPane();
@@ -103,9 +110,14 @@ public class LogInView {
         okButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                stage.close();
-                new MainMenuView(new Stage());
+                controller.logIn(userField.getText(), passwordField.getText());
             }
         });
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        stage.close();
+        new MainMenuView(new Stage(), (Player)arg);
     }
 }
